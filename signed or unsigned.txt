@@ -1,0 +1,19 @@
+3.6 Write a program to read and check if the user entered number is signed or unsigned
+using appropriate meta character.
+Code
+%{
+#include<stdio.h>
+%}
+%%
+[+|-][0-9]+ {printf("Signed number!\n");}
+[0-9]+ {printf("Unsigned number!\n");}
+%%
+int yywrap()
+{
+return 1;
+}
+void main()
+{
+printf("Enter a number:\n");
+yylex();
+}

@@ -1,0 +1,26 @@
+3.5 Lex program to count the number of comment lines (multi line comments or single
+line) in a program. Read the input from a file called input.txt and print the count in a
+file called output.txt.
+Code
+%{
+#include<stdio.h>
+int c=0;
+%}
+%%
+"\/\*"[^*]*\*+([^/*][^*]*\*+)*\/ {c++;}
+"//".* {c++;}
+. ECHO;
+%%
+int yywrap()
+{
+return 1;
+}
+void main()
+{
+yyin=fopen("input.txt","r");
+yyout=fopen("output.txt","w");
+yylex();
+printf("The number of comments are:%d\n",c);
+fclose(yyin);
+fclose(yyout);
+}

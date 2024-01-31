@@ -1,0 +1,17 @@
+2.5 Write a program in lex to find the length of the input string.
+Code
+%{
+#include<stdio.h>
+%}
+%%
+[a-zA-Z0-9.,!? \t]+ {printf("Length of input string is %d.\n",yyleng);}
+%%
+void main()
+{
+printf("Enter a string:\n");
+yylex();
+}
+int yywrap()
+{
+return 1;
+}
